@@ -3,7 +3,6 @@ const { Template } = require('@accordproject/cicero-core');
 
 async function main() {
     const template = await Template.fromDirectory('./archives/latedeliveryandpenalty-typescript');
-    const processor = new TemplateArchiveProcessor(template);
     const templateArchiveProcessor = new TemplateArchiveProcessor(template);
     const data = {
         "$class": "io.clause.latedeliveryandpenalty@0.1.0.TemplateModel",
