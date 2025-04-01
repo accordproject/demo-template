@@ -1,0 +1,18 @@
+{
+  "name": "demo-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+  },
+  "dependencies": {
+    "@accordproject/cicero-core": "0.25.1-20250328175253",
+    "@accordproject/template-engine": "^2.6.7"
+  }
+}
