@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-empty-interface */
 // Generated code for namespace: concerto@1.0.0
 
 // imports
@@ -16,12 +15,12 @@ import type {
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
-	IState
-} from './org.accordproject.runtime@0.2.0';
-import type {
 	IContract,
 	IClause
 } from './org.accordproject.contract@0.2.0';
+import type {
+	IState
+} from './org.accordproject.runtime@0.2.0';
 
 // Warning: Beware of circular dependencies when modifying these imports
 import type {
@@ -39,16 +38,16 @@ export interface IConcept {
    $class: string;
 }
 
-export type ConceptUnion = IDuration |
+export type ConceptUnion = IDuration | 
 IPeriod;
 
 export interface IAsset extends IConcept {
    $identifier: string;
 }
 
-export type AssetUnion = IState |
-IContract |
-IClause;
+export type AssetUnion = IContract | 
+IClause | 
+IState;
 
 export interface IParticipant extends IConcept {
    $identifier: string;
@@ -58,7 +57,7 @@ export interface ITransaction extends IConcept {
    $timestamp: Date;
 }
 
-export type TransactionUnion = IRequest |
+export type TransactionUnion = IRequest | 
 IResponse;
 
 export interface IEvent extends IConcept {
@@ -66,3 +65,4 @@ export interface IEvent extends IConcept {
 }
 
 export type EventUnion = IObligation;
+

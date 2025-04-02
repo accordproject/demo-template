@@ -29,6 +29,7 @@ async function trigger() {
         goodsValue: 100
     };
     const response = await templateArchiveProcessor.trigger(data, request);
+    console.log('\nTrigger response:');
     console.log(JSON.stringify(response, null, 2));
 }
 
@@ -54,10 +55,11 @@ async function draft() {
         "clauseId": "c88e5ed7-c3e0-4249-a99c-ce9278684ac8",
         "$identifier": "c88e5ed7-c3e0-4249-a99c-ce9278684ac8"
     };
-    const options = {verbose: true};
+    const options = {verbose: false};
     const result = await templateArchiveProcessor.draft(data, 'markdown', options);
+    console.log('\Contract draft:');
     console.log(result);
 }
 
-// trigger();
 draft();
+trigger();
