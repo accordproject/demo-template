@@ -136,9 +136,6 @@ Comprehensive test suite with CLI integration testing:
 # Run all tests
 npm test
 
-# Run with coverage report
-npm run test:coverage
-
 # Run in watch mode
 npm run test:watch
 
@@ -152,6 +149,8 @@ npm test __tests__/trigger.test.js
 - **Error Handling** - Invalid files, missing arguments, malformed JSON
 - **Edge Cases** - Boundary conditions, different data formats
 - **Output Validation** - Correct formatting, exit codes, error messages
+
+Note: Coverage metrics are not meaningful for CLI tools tested via process spawning. The integration tests provide comprehensive validation of real-world usage scenarios.
 
 ## Example Scenarios
 

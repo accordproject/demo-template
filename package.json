@@ -5,7 +5,6 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
     "start": "node index.js",
     "draft": "node --no-deprecation draft.js data/template-basic.json",
     "draft:low": "node --no-deprecation draft.js data/template-low-penalty.json",
@@ -27,15 +26,6 @@
     "@accordproject/template-engine": "^2.6.7"
   },
   "jest": {
-    "testEnvironment": "node",
-    "collectCoverageFrom": [
-      "*.js",
-      "!node_modules/**"
-    ],
-    "coverageReporters": [
-      "text",
-      "lcov",
-      "html"
-    ]
+    "testEnvironment": "node"
   }
 }
