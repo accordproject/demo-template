@@ -1,6 +1,6 @@
 # Accord Project Demo Template
 
-A comprehensive Accord Project template demonstrating contract logic implementation using TypeScript, with flexible CLI tools and extensive testing.
+An Accord Project template demonstrating contract logic implementation using TypeScript, with flexible CLI tools and extensive testing.
 
 ## Quick Start
 
@@ -214,13 +214,3 @@ npm run test-values  # Multiple scenarios
 echo '{"goodsValue": 5000}' > data/custom-request.json
 node trigger.js data/template-high-penalty.json data/custom-request.json
 ```
-
-## Learn More
-
-- [Accord Project Documentation](https://docs.accordproject.org/)
-- [Cicero Template Engine](https://github.com/accordproject/cicero)
-- [Template Development Guide](https://docs.accordproject.org/docs/tutorial-templates)
-
----
-
-**Built with the Accord Project framework for smart legal contracts.**
