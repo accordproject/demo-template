@@ -16,6 +16,15 @@ npm start
 # Generate a contract draft
 npm run draft
 
+# Generate a PDF contract
+npm run pdf
+
+# Generate a markdown contract file
+npm run md
+
+# Generate a JSON business logic response
+npm run json
+
 # Test business logic
 npm run trigger
 
@@ -29,6 +38,9 @@ npm test
 ├── index.js                    # Main demo script
 ├── draft.js                    # Contract generation CLI
 ├── trigger.js                  # Business logic CLI
+├── generate-pdf.js             # PDF generation CLI
+├── generate-md.js              # Markdown generation CLI
+├── generate-json.js            # JSON response generation CLI
 ├── list-data-files.js          # Data file explorer
 ├── test-different-values.js    # Multi-scenario demo
 ├── data/                       # JSON configuration files
@@ -68,6 +80,54 @@ npm run trigger:high    # High penalty + high value
 # Using Node.js directly
 node trigger.js data/template-basic.json data/request-basic.json
 node trigger.js --help  # Show usage
+```
+
+### PDF Generation
+
+Generate PDF contracts from template data:
+
+```bash
+# Using npm scripts
+npm run pdf             # Basic template
+npm run pdf:low         # Low penalty template
+npm run pdf:high        # High penalty template
+
+# Using Node.js directly
+node generate-pdf.js data/template-basic.json
+node generate-pdf.js data/template-basic.json output/contract.pdf
+node generate-pdf.js --help  # Show usage
+```
+
+### Markdown Generation
+
+Generate markdown contract files from template data:
+
+```bash
+# Using npm scripts
+npm run md              # Basic template
+npm run md:low          # Low penalty template
+npm run md:high         # High penalty template
+
+# Using Node.js directly
+node generate-md.js data/template-basic.json
+node generate-md.js data/template-basic.json output/contract.md
+node generate-md.js --help  # Show usage
+```
+
+### JSON Response Generation
+
+Generate JSON business logic response files from template and request data:
+
+```bash
+# Using npm scripts
+npm run json            # Basic scenario
+npm run json:low        # Low penalty + low value
+npm run json:high       # High penalty + high value
+
+# Using Node.js directly
+node generate-json.js data/template-basic.json data/request-basic.json
+node generate-json.js data/template-basic.json data/request-basic.json output/response.json
+node generate-json.js --help  # Show usage
 ```
 
 ### Utility Tools
@@ -187,6 +247,8 @@ npm test -- --testNamePattern="should handle"
 - **CLI Tools** - Easy-to-use command-line interfaces
 - **Comprehensive Testing** - Full CLI integration test coverage
 - **Multiple Output Formats** - Markdown, HTML, PDF contract generation
+- **PDF Generation** - Direct PDF output from template data
+- **JSON Response Generation** - Business logic responses saved to files
 - **Business Logic Engine** - Penalty calculations and contract logic
 - **Scenario Testing** - Pre-configured test cases and combinations
 - **Data Exploration** - Built-in tools to explore available configurations

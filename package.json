@@ -13,7 +13,16 @@
     "trigger:low": "node --no-deprecation trigger.js data/template-low-penalty.json data/request-low-value.json",
     "trigger:high": "node --no-deprecation trigger.js data/template-high-penalty.json data/request-high-value.json",
     "test-values": "node --no-deprecation test-different-values.js",
-    "list": "node --no-deprecation list-data-files.js"
+    "list": "node --no-deprecation list-data-files.js",
+    "pdf": "node --no-deprecation generate-pdf.js data/template-basic.json output/contract.pdf",
+    "pdf:low": "node --no-deprecation generate-pdf.js data/template-low-penalty.json output/contract-low-penalty.pdf",
+    "pdf:high": "node --no-deprecation generate-pdf.js data/template-high-penalty.json output/contract-high-penalty.pdf",
+    "md": "node --no-deprecation generate-md.js data/template-basic.json output/contract.md",
+    "md:low": "node --no-deprecation generate-md.js data/template-low-penalty.json output/contract-low-penalty.md",
+    "md:high": "node --no-deprecation generate-md.js data/template-high-penalty.json output/contract-high-penalty.md",
+    "json": "node --no-deprecation generate-json.js data/template-basic.json data/request-basic.json output/response.json",
+    "json:low": "node --no-deprecation generate-json.js data/template-low-penalty.json data/request-low-value.json output/response-low.json",
+    "json:high": "node --no-deprecation generate-json.js data/template-high-penalty.json data/request-high-value.json output/response-high.json"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +32,9 @@
   },
   "dependencies": {
     "@accordproject/cicero-core": "0.25.1-20250328175253",
-    "@accordproject/template-engine": "^2.6.7"
+    "@accordproject/markdown-transform": "^0.16.25",
+    "@accordproject/template-engine": "^2.6.7",
+    "markdown-pdf": "^11.0.0"
   },
   "jest": {
     "testEnvironment": "node"
