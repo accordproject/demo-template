@@ -1,65 +1,32 @@
-const { TemplateArchiveProcessor } = require('@accordproject/template-engine');
-const { Template } = require('@accordproject/cicero-core');
+const { spawn } = require("child_process");
 
-const TEMPLATE_PATH = './archives/latedeliveryandpenalty-typescript';
+// Set up command line arguments for draft.js and trigger.js to use default data
+const templateFile = "data/template-basic.json";
+const requestFile = "data/request-basic.json";
 
-async function trigger() {
-    const template = await Template.fromDirectory(TEMPLATE_PATH);
-    const templateArchiveProcessor = new TemplateArchiveProcessor(template);
-    const data = {
-        "$class": "io.clause.latedeliveryandpenalty@0.1.0.TemplateModel",
-        "forceMajeure": true,
-        "penaltyDuration": {
-            "$class": "org.accordproject.time@0.3.0.Duration",
-            "amount": 2,
-            "unit": "days"
-        },
-        "penaltyPercentage": 10.5,
-        "capPercentage": 55,
-        "termination": {
-            "$class": "org.accordproject.time@0.3.0.Duration",
-            "amount": 15,
-            "unit": "days"
-        },
-        "fractionalPart": "days",
-        "clauseId": "c88e5ed7-c3e0-4249-a99c-ce9278684ac8",
-        "$identifier": "c88e5ed7-c3e0-4249-a99c-ce9278684ac8"
-    };
-    const request = {
-        goodsValue: 100
-    };
-    const response = await templateArchiveProcessor.trigger(data, request);
-    console.log('\nTrigger response:');
-    console.log(JSON.stringify(response, null, 2));
+function runCommand(command, args) {
+  return new Promise((resolve, reject) => {
+    const child = spawn("node", [command, ...args], {
+      stdio: "inherit", // This will show output in real-time
+    });
+
+    child.on("close", (code) => {
+      if (code === 0) {
+        resolve();
+      } else {
+        reject(new Error(`Command failed with exit code ${code}`));
+      }
+    });
+
+    child.on("error", (error) => {
+      reject(error);
+    });
+  });
 }
 
-async function draft() {
-    const template = await Template.fromDirectory(TEMPLATE_PATH);
-    const templateArchiveProcessor = new TemplateArchiveProcessor(template);
-    const data = {
-        "$class": "io.clause.latedeliveryandpenalty@0.1.0.TemplateModel",
-        "forceMajeure": true,
-        "penaltyDuration": {
-            "$class": "org.accordproject.time@0.3.0.Duration",
-            "amount": 2,
-            "unit": "days"
-        },
-        "penaltyPercentage": 10.5,
-        "capPercentage": 55,
-        "termination": {
-            "$class": "org.accordproject.time@0.3.0.Duration",
-            "amount": 15,
-            "unit": "days"
-        },
-        "fractionalPart": "days",
-        "clauseId": "c88e5ed7-c3e0-4249-a99c-ce9278684ac8",
-        "$identifier": "c88e5ed7-c3e0-4249-a99c-ce9278684ac8"
-    };
-    const options = {verbose: false};
-    const result = await templateArchiveProcessor.draft(data, 'markdown', options);
-    console.log('\Contract draft:');
-    console.log(result);
+async function runSequentially() {
+  await runCommand("draft.js", [templateFile]);
+  await runCommand("trigger.js", [templateFile, requestFile]);
 }
 
-draft();
-trigger();
+runSequentially().catch(console.error);

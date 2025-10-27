@@ -1,2 +1,14 @@
 node_modules
 .DS_Store
+
+# Generated output files
+output/
+*.pdf
+contract*.md
+
+# Test coverage (if generated)
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
