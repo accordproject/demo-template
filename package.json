@@ -12,7 +12,7 @@
   "devDependencies": {
   },
   "dependencies": {
-    "@accordproject/cicero-core": "0.25.1-20250328175253",
+    "@accordproject/cicero-core": "0.25.2",
     "@accordproject/template-engine": "^2.6.7"
   }
 }
