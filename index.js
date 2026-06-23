@@ -29,8 +29,13 @@ async function trigger() {
         goodsValue: 100
     };
     const response = await templateArchiveProcessor.trigger(data, request);
-    console.log('\nTrigger response:');
-    console.log(JSON.stringify(response, null, 2));
+    console.log('\n======== Contract Trigger Response ========');
+    const result = response.result;
+    console.log(`Penalty Amount: ${result.penalty}`);
+    console.log(`Buyer Can Terminate: ${result.buyerMayTerminate ? 'YES' : 'NO'}`);
+    console.log(`Timestamp: ${result.$timestamp}`);
+    console.log(`Class: ${result.$class}`);
+    console.log('-----------------------------------------------------------------------------');
 }
 
 async function draft() {
@@ -57,7 +62,7 @@ async function draft() {
     };
     const options = {verbose: false};
     const result = await templateArchiveProcessor.draft(data, 'markdown', options);
-    console.log('\Contract draft:');
+    console.log('\n======== Contract Draft ========');
     console.log(result);
 }
 
